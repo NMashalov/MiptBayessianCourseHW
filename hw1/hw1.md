@@ -15,7 +15,21 @@ $$
 $$
 ### Part B
 
-Graph is provided in [Notebook](./task1.ipynb)
+Assume that oracle persist in competition and k is sufficient enough, than 
+dramatic difference of successful guess in trials. Hence, probability of finding oracle in
+competition simplifies to probability of entrance of at least one oracle. Which is evidently equals
+to 100/1000=0.1 Therefore, prior existence of oracle in setting of part A alters to 0.1. This substantially
+changes probability of finding oracle.
+
+
+Graph for $k\in[0,1000]$ is provided in [Notebook](./task1.ipynb)
+
+![Dependency of prior from k](static/task1/prior_k.png)
+
+Fun fact
+[Fisher–Tippett–Gnedenko theorem](https://en.wikipedia.org/wiki/Fisher%E2%80%93Tippett%E2%80%93Gnedenko_theorem)
+states that maximum of iid normal variables $N(\mu,\sigma^2)$ converges to Gumbel distribution. 
+
 
 # Task 2
 
@@ -65,11 +79,20 @@ $$
 Follow Part A of notebook for [graph](./task3.ipynb#PartA) 
 
 
+![Dependency of prior from k](static/task3/distributions.png)
+
 ## Task 4
 
-Correlation coefficients even for bivariate normal distribution has complex analytical [form](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient#Using_the_exact_distribution). Therefore, we'll use central limit theorem for sake of simplicity:
+If x,y are independent distribution of 
+pearson coefficient is given via [cdf](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html):
 $$
-    \sqrt{N}(\rho) \sim \ma
-$$
+    \frac{(1-r^2)^{n/2}}{\mathbb{B}(\frac{1}{2},\frac{n}{2}-1)}
+$$  
+
+Using scipy we can compute that probability of finding $\rho > 0.97$ is approximately $10^{-7}$, which is intractable for modeling.
+
+![Dependency rho from k](static/task4/rho_k_dependency.png)
+
+## Task 5
 
 
