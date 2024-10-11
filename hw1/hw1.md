@@ -63,23 +63,52 @@ $$
 Yield second order using second order moment:
 $$
     E((XY)^2) = E((\rho Z_1^2 + \sqrt{1-\rho^2} Z_1 Z_2)^2) = 
-    E(\rho^2 Z_1^4 + 2 \rho \sqrt{1-\rho^2} Z_1^3 Z_2 + (1-\rho) Z_1^2 Z_2^2) = 3 \rho^2 + 1-\rho  
+    E(\rho^2 Z_1^4 + 2 \rho \sqrt{1-\rho^2} Z_1^3 Z_2 + (1-\rho^2) Z_1^2 Z_2^2) = \\ 3 \rho^2 + 1-\rho^2  = 1 + 2 \rho^2
 $$
 
 Therefore, dispersion:
 $$
-    D(XY) = 1 - \rho + 2 \rho^2
+    D(XY) = 1 + \rho^2
 $$
 
 Using central limit theorem:
 $$
-    \sqrt{N} (T(Z) - \rho) = N(0,1 - \rho + 2 \rho^2)
+    \sqrt{N} (T(Z) - \rho) = N(0,1 + \rho^2)
 $$
 
-Follow Part A of notebook for [graph](./task3.ipynb#PartA) 
-
-
 ![Dependency of prior from k](static/task3/distributions.png)
+
+Code can be visited here [graph](tasks/task3.ipynb) 
+
+Therefore appropriate criterion can be sourced from quantile of aforemention normal distribution approximation:
+$$
+    |T(x)| < z_{1-\tfrac{\alpha}{2}} 
+$$
+
+
+Power of criterion abides following distribution:
+
+
+![n=100](static/task3/power_n_100.png)
+
+For $n \in  [20,100,200,500,1000]$
+
+![arbitary](static/task3/power_n_dep.png)
+
+
+Analytical inference for $n \gg 1$ is derived as survival function of $\mathcal{N}(\rho,\frac{1 + \rho^2}{n})$ from $z_{1-\tfrac{\alpha}{2}}$. 
+
+Recall, distribution of statistics $T(\mathbf{Z})= \frac{1}{2n}\sum_{i=1}^n (x_i -y_i)^2$ is $\frac{1-\rho}{n} \xi$, $\xi \sim \chi^2(n)$. Therefore, criterion is 
+$$
+    \frac{1-\rho}{n}\Chi_{\alpha/2}< (z) < T(\mathbf{Z}) < \frac{1-\rho}{n} \Chi_{1-\alpha/2}
+$$,
+where $\Chi_\beta$ denotes $\beta$ quantile of $\chi^2(n)$ distribution.
+
+So power of criterion can be estimated of cumulative density function of $\xi^2(n)$ distribution from $\frac{1}{1-\rho} \Chi_{1-\tfrac{\alpha}{2}}$
+
+![n=100](static/task3/chi_analytical_power_n_dep.png)
+
+Second statistic is better for $n<20$ due to easy of rigorous inference, yet first statistics has more rapid increase in power with $n >>1$.
 
 ## Task 4
 
@@ -95,4 +124,14 @@ Using scipy we can compute that probability of finding $\rho > 0.97$ is approxim
 
 ## Task 5
 
+Naive bayes approach can be spoiled via abuse of it's single factor approach. This is it,
+suppose classification is designated to dataset (X,Y), where X is collection of tuple (x_1,x_2), with $x_i \sim Bern(0.5)$ and $Y = x_1 * x_2$. Therefore, naive bayes learned with sufficient sample size will have following estimations: 
+$$
+    P(Y=1| x_1=1)= P(Y=1| x_1=0)= P(Y=1| x_2=0) = P(Y=1| x_2=1) = P(Y=1) = 0.5
+$$
+, which clearly doesn't separate classes. Nevertheless, classes are ideally separated.
 
+![Dependency rho from k](static/task5/illustration.excalidraw.png)
+
+
+## Task 6
