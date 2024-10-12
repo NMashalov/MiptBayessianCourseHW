@@ -1,6 +1,6 @@
 # Task 1
 
-### Part A
+## Part A
 Suppose $\theta \ in [0,1]$ is flag of oracle and $x_i \in [0,1]$ is outcome of $i$ trial. Hence probability of task statement for ordinary person can be rewritten as:
 $$
     P(x_1=1,\dots,x_10=1 | \theta =0 ) = P(x_1 =1 | \theta=0) \dots  P(x_10 =1 | \theta=0) P(\theta =0) = 10^{-3} 0.9^(10) 
@@ -13,7 +13,8 @@ Using bayesian formula, we will achieve:
 $$
     P(\theta=1| x_1=1,\dots,x_10=1) = \frac{P(x_1=1,\dots,x_10=1 | \theta =1 )}{P(x_1=1,\dots,x_10=1 | \theta =1 ) + P(x_1=1,\dots,x_10=1 | \theta =0 )}
 $$
-### Part B
+
+## Part B
 
 Assume that oracle persist in competition and k is sufficient enough, than 
 dramatic difference of successful guess in trials. Hence, probability of finding oracle in
