@@ -35,7 +35,7 @@ states that maximum of iid normal variables $N(\mu,\sigma^2)$ converges to Gumbe
 
 Quantile estimation of large population (k >>1) can be asymptotically estimated with normal distribution with known distribution  [Wiki](https://en.wikipedia.org/wiki/Order_statistic#Large%20sample%20sizes):
 $$
-    F^{-1}(p), \frac{p(1-p)}{n[f(F^{-1}(p))]^2}
+    Q \sim \mathcal{N}(F^{-1}(p), \frac{p(1-p)}{n[f(F^{-1}(p))]^2})
 $$
 
 Obviating of direct estimation of density function can be achieved through bootstrap techniques.
@@ -112,17 +112,17 @@ Analytical inference for $n \gg 1$ is derived as survival function of $\mathcal{
 
 Recall, distribution of statistics $T(\mathbf{Z})= \frac{1}{2n}\sum_{i=1}^n (x_i -y_i)^2$ is $\frac{1-\rho}{n} \xi$, $\xi \sim \chi^2(n)$. Therefore, criterion is 
 $$
-    \frac{1-\rho}{n}\Chi_{\alpha/2}< (z) < T(\mathbf{Z}) < \frac{1-\rho}{n} \Chi_{1-\alpha/2}
+    \frac{1-\rho}{n} \Phi_{\alpha/2} < T(\mathbf{Z}) < \frac{1-\rho}{n} \Phi_{1-\alpha/2}
 $$,
-where $\Chi_\beta$ denotes $\beta$ quantile of $\chi^2(n)$ distribution.
+where $\Phi_\beta$ denotes $\beta$ quantile of $\chi^2(n)$ distribution.
 
-So power of criterion can be estimated of cumulative density function of $\xi^2(n)$ distribution from $\frac{1}{1-\rho} \Chi_{1-\tfrac{\alpha}{2}}$
+So power of criterion can be estimated of cumulative density function of $\xi^2(n)$ distribution from $\frac{1}{1-\rho} \Phi_{1-\tfrac{\alpha}{2}}$
 
 ![n=100](static/task3/chi_analytical_power_n_dep.png)
 
 Second statistic is better for $n<20$ due to easy of rigorous inference, yet first statistics has more rapid increase in power with $n >>1$.
 
-## Task 4
+# Task 4
 
 If x,y are independent distribution of 
 pearson coefficient is given via [cdf](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html):
@@ -134,7 +134,7 @@ Using scipy we can compute that probability of finding $\rho > 0.97$ is approxim
 
 ![Dependency rho from k](static/task4/rho_k_dependency.png)
 
-## Task 5
+# Task 5
 
 Naive bayes approach can be spoiled via abuse of it's single factor approach. This is it,
 suppose classification is designated to dataset (X,Y), where X is collection of tuple (x_1,x_2), with $x_i \sim Bern(0.5)$ and $Y = x_1 * x_2$. Therefore, naive bayes learned with sufficient sample size will have following estimations: 
@@ -146,10 +146,10 @@ $$
 ![Dependency rho from k](static/task5/illustration.excalidraw.png)
 
 
-## Task 6
+# Task 6
 
 Jupyter notebook is sufficient for describing solution of [task6](tasks/task6.ipynb).
 
-## Task 7
+# Task 7
 
 Akin [task7](tasks/task7.ipynb)
