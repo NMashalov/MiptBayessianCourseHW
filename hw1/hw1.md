@@ -33,12 +33,24 @@ states that maximum of iid normal variables $N(\mu,\sigma^2)$ converges to Gumbe
 
 # Task 2
 
-Quantile estimation of large population (k >>1) can be assymptoticall estimated with normal distribution with known:
+Quantile estimation of large population (k >>1) can be asymptotically estimated with normal distribution with known distribution  [Wiki](https://en.wikipedia.org/wiki/Order_statistic#Large%20sample%20sizes):
 $$
     F^{-1}(p), \frac{p(1-p)}{n[f(F^{-1}(p))]^2}
 $$
 
-. For further clarification please follow [Wiki](https://en.wikipedia.org/wiki/Order_statistic#Large%20sample%20sizes)
+Obviating of direct estimation of density function can be achieved through bootstrap techniques.
+That is, we'll build quantile estimation as mean of estimators on samples from original population.
+Based on [lecture materials](https://people.cs.umass.edu/~phaas/CS590M/slides/slecture09h.pdf):
+$$
+    \hat{Q} = \sqrt{\frac{\nu}{m}} \xi, \xi \sim  T_{m-1} 
+$$,
+where $m$ - number of bootstrap samples, $T$ is student distribution and $\nu_n = \frac{1}{m-1} \sum_{i=1}^n (Q_i - \hat{Q})^2$  
+
+Required hypothesis can be achieved through comparing estimator
+with $\alpha/2$ and $1-\alpha/2$ quantiles.
+
+Proof on concept is provided in corresponding [notebook](tasks/task2.ipynb)
+
 
 # Task 3
 
@@ -135,3 +147,9 @@ $$
 
 
 ## Task 6
+
+Jupyter notebook is sufficient for describing solution of [task6](tasks/task6.ipynb).
+
+## Task 7
+
+Akin [task7](tasks/task7.ipynb)
